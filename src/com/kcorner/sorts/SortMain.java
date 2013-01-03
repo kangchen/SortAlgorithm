@@ -20,7 +20,7 @@ public class SortMain extends ConsoleProgram{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        //application entrance
         new SortMain().start(args);
     }
 
