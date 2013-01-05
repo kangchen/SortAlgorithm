@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import acm.program.*;
 
 /**
- * make some codes change
+ * 
  */
 public class SortMain extends ConsoleProgram{
 
@@ -60,19 +60,13 @@ public class SortMain extends ConsoleProgram{
     }
     
     private void quickSort() {
-    	
-//    Sort mySort = new Sort(a); 
-//    mySort.quickSort();
-//    mySort.mergeSort();
-//    mySort.selectionSort();
-//    mySort.bubbleSort();      
-
+   
       //Using thread
       QuickSort myQuickSort = new QuickSort(a);
       Thread t = new Thread(myQuickSort);
       try{
     	  t.start();
-    	  //t.join();
+    	  t.join();
       }catch(Exception e){
     	  System.out.println(e.getMessage());
       }
@@ -88,7 +82,7 @@ public class SortMain extends ConsoleProgram{
         Thread t = new Thread(mybubbleSort);
         try{
       	  t.start();
-      	  //t.join();
+      	  t.join();
         }catch(Exception e){
       	  System.out.println(e.getMessage());
         }
