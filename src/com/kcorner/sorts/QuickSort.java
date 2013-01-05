@@ -20,7 +20,6 @@ public class QuickSort implements Runnable{
      */
     public void sort() {
     	
-        //long starttime = System.currentTimeMillis();
         long starttime = System.nanoTime(); 
         if (!isSorted()){
             doQuickSort(0, intArray.length-1);
