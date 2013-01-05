@@ -58,9 +58,9 @@ public class SortMain extends ConsoleProgram{
         println(pts);
         println(a);
     }
-    
-    private void quickSort() {
-   
+
+    private void quickSort() {     
+
       //Using thread
       QuickSort myQuickSort = new QuickSort(a);
       Thread t = new Thread(myQuickSort);
@@ -89,7 +89,7 @@ public class SortMain extends ConsoleProgram{
         //////////////////////////////
         println("Bubble Sort:");
         println(pts);
-      }    
+    }    
     
     
     private void println(int[] ab) {
