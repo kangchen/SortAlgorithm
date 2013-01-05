@@ -113,7 +113,7 @@ public class QuickSort implements Runnable{
     }
     
     public String toString() {
-    	return "QuickSort is completed in " + getTime() + " nanoseconds";
+    	return "Quick sort is completed in " + getTime() + " nanoseconds";
     }
 
     private long getTime() {

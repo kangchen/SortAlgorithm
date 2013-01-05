@@ -48,10 +48,9 @@ public class SortMain extends ConsoleProgram{
     public void run() {
         println("Unsorted Array:");
         println(a);
-        
-        //arraylist
-        bubbleSort();
-        //array
+
+//        bubbleSort(false);
+        selectionSort(true);
         quickSort();
         
         println("Main Thread Prints:");  
@@ -75,18 +74,48 @@ public class SortMain extends ConsoleProgram{
       println(a);
     }
 
-    private void bubbleSort() {
+    private void selectionSort(boolean useNewThread) {
     	
-        //Using thread
-        BubbleSort mybubbleSort = new BubbleSort(pts);
-        Thread t = new Thread(mybubbleSort);
-        try{
-      	  t.start();
-      	  t.join();
-        }catch(Exception e){
-      	  System.out.println(e.getMessage());
+        SelectionSort mySelectionSort = new SelectionSort(pts);
+        //////////////////////////////
+        //Using new thread
+        if (useNewThread) {
+        	Thread t = new Thread(mySelectionSort);
+        	try{
+        		t.start();
+        		t.join();
+        	}catch(Exception e){
+        		System.out.println(e.getMessage());
+        	}
         }
         //////////////////////////////
+        //Using main thread
+        else mySelectionSort.run();
+        //////////////////////////////
+        
+        println("Selection Sort:");
+        println(pts);
+    }  
+    
+    private void bubbleSort(boolean useNewThread) {
+    	
+        BubbleSort mybubbleSort = new BubbleSort(pts);
+        //////////////////////////////
+        //Using new thread
+        if (useNewThread) {
+        	Thread t = new Thread(mybubbleSort);
+        	try{
+        		t.start();
+        		t.join();
+        	}catch(Exception e){
+        		System.out.println(e.getMessage());
+        	}
+        }
+        //////////////////////////////
+        //Using main thread
+        else mybubbleSort.run();
+        //////////////////////////////
+        
         println("Bubble Sort:");
         println(pts);
     }    
