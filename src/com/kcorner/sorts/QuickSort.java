@@ -20,11 +20,12 @@ public class QuickSort implements Runnable{
      */
     public void sort() {
     	
-        long starttime = System.currentTimeMillis();
+        //long starttime = System.currentTimeMillis();
+        long starttime = System.nanoTime(); 
         if (!isSorted()){
             doQuickSort(0, intArray.length-1);
         }
-        long endtime = System.currentTimeMillis();
+        long endtime = System.nanoTime();
         time = endtime - starttime;
     }
 
@@ -113,7 +114,7 @@ public class QuickSort implements Runnable{
     }
     
     public String toString() {
-    	return "QuickSort is completed: " + getTime() + " milliseconds";
+    	return "QuickSort is completed in " + getTime() + " nanoseconds";
     }
 
     private long getTime() {
