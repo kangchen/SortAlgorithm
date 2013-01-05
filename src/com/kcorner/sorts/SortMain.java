@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package com.kcorner.sorts;
+import java.util.ArrayList;
+
 import acm.program.*;
 
 /**
@@ -16,6 +18,7 @@ public class SortMain extends ConsoleProgram{
     public static int SIZE = 19;
     public static int MAXINT = 80;
     private int[] a = new int[SIZE];
+    private ArrayList<Integer> pts = new ArrayList<Integer> ();
     /**
      * @param args the command line arguments
      */
@@ -37,41 +40,71 @@ public class SortMain extends ConsoleProgram{
     private void setRandomNumber() {
         for(int i=0;i<SIZE;i++){
             a[i] = (int)(Math.random()*MAXINT) + 10;
+            pts.add(a[i]);
         }
     }
 
     @Override
     public void run() {
-    	test();
-    	println("Done");
+        println("Unsorted Array:");
+        println(a);
+        
+        //arraylist
+        bubbleSort();
+        //array
+        quickSort();
+        
+        println("Main Thread Prints:");  
+        println(pts);
+        println(a);
     }
     
-    private void test() {
-
-      println(a);	
+    private void quickSort() {
+    	
 //    Sort mySort = new Sort(a); 
 //    mySort.quickSort();
 //    mySort.mergeSort();
 //    mySort.selectionSort();
 //    mySort.bubbleSort();      
-   	
+
       //Using thread
       QuickSort myQuickSort = new QuickSort(a);
       Thread t = new Thread(myQuickSort);
       try{
     	  t.start();
-    	  t.join();
+    	  //t.join();
       }catch(Exception e){
     	  System.out.println(e.getMessage());
       }
       //////////////////////////////
-
+      println("Quick Sort:");
       println(a);
     }
+
+    private void bubbleSort() {
+    	
+        //Using thread
+        BubbleSort mybubbleSort = new BubbleSort(pts);
+        Thread t = new Thread(mybubbleSort);
+        try{
+      	  t.start();
+      	  //t.join();
+        }catch(Exception e){
+      	  System.out.println(e.getMessage());
+        }
+        //////////////////////////////
+        println("Bubble Sort:");
+        println(pts);
+      }    
+    
     
     private void println(int[] ab) {
         for (int a:ab) print(a + "  ");
         println();
     }
-    
+   
+    private void println(ArrayList<Integer> ab) {
+    	for (Integer a:ab) print(a + "  ");
+        println();
+    }    
 }
