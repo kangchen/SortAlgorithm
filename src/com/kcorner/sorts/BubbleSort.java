@@ -12,11 +12,14 @@ public class BubbleSort implements Runnable{
 	}
 
 	public void run() {
-		sortIt();
+		sort();
 		System.out.println(this.toString());
 	}
-    
-	public void sortIt() {
+ 
+    /*
+     * Bubble Sort Algorithm O(N*N)
+     */	
+	public void sort() {
 		long starttime = System.nanoTime();
 		for (int i=0; i<item.size()-1; i++){
 			for (int j=0; j<item.size()-1; j++){

@@ -21,25 +21,6 @@ public class Sort {
     }
 
     /*
-     * Bubble Sort Algorithm O(N*N)
-     */
-    public void bubbleSort() {
-    	sortName = "Bubble Sort";
-        long starttime = System.currentTimeMillis();
-
-        for (int i=0; i<item.length-1; i++){
-            for (int j=0; j<item.length-1; j++){
-                if (item[j] > item[j+1]) {
-                    swap(j,j+1);
-                }
-            }
-        }
-
-        long endtime = System.currentTimeMillis();
-        time = endtime - starttime;
-    }
-
-    /*
      * Selection Sort Algorithm O((N*N)/2)
      */
     public void selectionSort() {
