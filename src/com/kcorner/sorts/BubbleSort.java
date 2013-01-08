@@ -43,6 +43,6 @@ public class BubbleSort implements Runnable{
     }
     
     public String toString() {
-    	return "Bubble sort is completed in " + getTime() + " nanoseconds";
+    	return "Bubble sort completed in " + getTime() + " nanoseconds";
     }
 }

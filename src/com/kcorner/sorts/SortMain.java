@@ -15,10 +15,11 @@ public class SortMain extends ConsoleProgram{
 	private static final long serialVersionUID = 1L;
 	private static final int XSCREENSIZE = 800;
     private static final int YSCREENSIZE = 600;
-    public static int SIZE = 19;
+    public static int SIZE = 15;
     public static int MAXINT = 80;
     private int[] a = new int[SIZE];
-    private ArrayList<Integer> pts = new ArrayList<Integer> ();
+    private ArrayList<Integer> bs = new ArrayList<Integer> ();
+    private ArrayList<Integer> ss = new ArrayList<Integer> ();
     /**
      * @param args the command line arguments
      */
@@ -40,7 +41,8 @@ public class SortMain extends ConsoleProgram{
     private void setRandomNumber() {
         for(int i=0;i<SIZE;i++){
             a[i] = (int)(Math.random()*MAXINT) + 10;
-            pts.add(a[i]);
+            bs.add(a[i]);
+            ss.add(a[i]);
         }
     }
 
@@ -49,13 +51,10 @@ public class SortMain extends ConsoleProgram{
         println("Unsorted Array:");
         println(a);
 
-//        bubbleSort(false);
+        bubbleSort(true);
         selectionSort(true);
         quickSort();
-        
-        println("Main Thread Prints:");  
-        println(pts);
-        println(a);
+
     }
 
     private void quickSort() {     
@@ -76,7 +75,7 @@ public class SortMain extends ConsoleProgram{
 
     private void selectionSort(boolean useNewThread) {
     	
-        SelectionSort mySelectionSort = new SelectionSort(pts);
+        SelectionSort mySelectionSort = new SelectionSort(ss);
         //////////////////////////////
         //Using new thread
         if (useNewThread) {
@@ -94,12 +93,12 @@ public class SortMain extends ConsoleProgram{
         //////////////////////////////
         
         println("Selection Sort:");
-        println(pts);
+        println(ss);
     }  
     
     private void bubbleSort(boolean useNewThread) {
     	
-        BubbleSort mybubbleSort = new BubbleSort(pts);
+        BubbleSort mybubbleSort = new BubbleSort(bs);
         //////////////////////////////
         //Using new thread
         if (useNewThread) {
@@ -117,7 +116,7 @@ public class SortMain extends ConsoleProgram{
         //////////////////////////////
         
         println("Bubble Sort:");
-        println(pts);
+        println(bs);
     }    
     
     
