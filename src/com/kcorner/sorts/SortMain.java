@@ -16,7 +16,7 @@ public class SortMain extends ConsoleProgram{
 	private static final int XSCREENSIZE = 800;
     private static final int YSCREENSIZE = 600;
     public static int SIZE = 15;
-    public static int MAXINT = 80;
+    public static int MAXINT = 50;
     private int[] a = new int[SIZE];
     private ArrayList<Integer> bs = new ArrayList<Integer> ();
     private ArrayList<Integer> ss = new ArrayList<Integer> ();
@@ -53,7 +53,7 @@ public class SortMain extends ConsoleProgram{
 
         bubbleSort(true);
         selectionSort(true);
-        quickSort();
+//        quickSort();
 
     }
 

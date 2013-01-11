@@ -1,13 +1,14 @@
 package com.kcorner.sorts;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BubbleSort implements Runnable{
 		
-	private ArrayList<Integer> item = new ArrayList<Integer> ();
+	private List<Integer> item = new ArrayList<Integer> ();
 	private long time = 0;
 	
-	public BubbleSort(ArrayList<Integer> item) {
+	public BubbleSort(List<Integer> item) {
 		this.item = item;
 	}
 

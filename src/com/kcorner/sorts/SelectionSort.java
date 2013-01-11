@@ -1,13 +1,14 @@
 package com.kcorner.sorts;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectionSort implements Runnable {
 	
-	private ArrayList<Integer> item = new ArrayList<Integer> ();
+	private List<Integer> item = new ArrayList<Integer> ();
 	private long time = 0;
 	
-	public SelectionSort(ArrayList<Integer> item) {
+	public SelectionSort(List<Integer> item) {
 		this.item = item;
 	}
 
