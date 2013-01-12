@@ -1,13 +1,14 @@
 package com.kcorner.sorts;
 
+import java.util.List;
 import java.util.ArrayList;
 
-public class SelectionSort implements Runnable {
+public class SelectionSort implements Runnable, Sort {
 	
-	private ArrayList<Integer> item = new ArrayList<Integer> ();
+	private List<Integer> item = new ArrayList<Integer> ();
 	private long time = 0;
 	
-	public SelectionSort(ArrayList<Integer> item) {
+	public SelectionSort(List<Integer> item) {
 		this.item = item;
 	}
 
@@ -51,5 +52,13 @@ public class SelectionSort implements Runnable {
     
     public String toString() {
     	return "Selection sort is completed in " + getTime() + " nanoseconds";
-    }    
+    }
+    
+    public void reversedList() {
+        int idx = item.size()/2;
+        int high = item.size()-1;
+        for(int low=0; low<idx; low++) {
+            swap(low, high--);
+        }
+    }     
 }

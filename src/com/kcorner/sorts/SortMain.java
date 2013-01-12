@@ -17,7 +17,6 @@ public class SortMain extends ConsoleProgram{
     private static final int YSCREENSIZE = 600;
     public static int SIZE = 19;
     public static int MAXINT = 80;
-    private int[] a = new int[SIZE];
     private ArrayList<Integer> pts = new ArrayList<Integer> ();
     /**
      * @param args the command line arguments
@@ -39,41 +38,74 @@ public class SortMain extends ConsoleProgram{
     
     private void setRandomNumber() {
         for(int i=0;i<SIZE;i++){
-            a[i] = (int)(Math.random()*MAXINT) + 10;
-            pts.add(a[i]);
+            pts.add((int)(Math.random()*MAXINT) + 10);
         }
     }
 
     @Override
     public void run() {
         println("Unsorted Array:");
-        println(a);
-
-//        bubbleSort(false);
-        selectionSort(true);
-        quickSort();
-        
-        println("Main Thread Prints:");  
         println(pts);
-        println(a);
+
+        testSort(1, true);
+ 
+        println(pts);
     }
+    
+    
+    private void testSort(int index, boolean newThread) {
+    	
+    	switch(index) {    	
+    		case 0: println("Bubble Sort");bubbleSort(newThread); break;
+    		case 1: println("Selection Sort");selectionSort(newThread); break;
+    		case 2: println("Merge Sort");mergeSort(newThread); break;
+    		case 3: println("Quick Sort");quickSort(newThread); break;
+    		default:println("Quick Sort");quickSort(newThread);
+    	}
+    	
+    }
+    
 
-    private void quickSort() {     
+    private void quickSort(boolean useNewThread) {     
 
-      //Using thread
-      QuickSort myQuickSort = new QuickSort(a);
-      Thread t = new Thread(myQuickSort);
-      try{
-    	  t.start();
-    	  t.join();
-      }catch(Exception e){
-    	  System.out.println(e.getMessage());
+      QuickSort myQuickSort = new QuickSort(pts);
+      //////////////////////////////
+      //Using new thread
+      if (useNewThread) {      
+    	  Thread t = new Thread(myQuickSort);
+    	  try{
+    		  t.start();
+    		  t.join();
+    	  }catch(Exception e){
+    		  System.out.println(e.getMessage());
+    	  }
       }
       //////////////////////////////
-      println("Quick Sort:");
-      println(a);
+      //Using main thread
+      else myQuickSort.run();
+      //////////////////////////////
     }
 
+    private void mergeSort(boolean useNewThread) {
+    	
+        MergeSort mergeSort = new MergeSort(pts);
+        //////////////////////////////
+        //Using new thread
+        if (useNewThread) {
+        	Thread t = new Thread(mergeSort);
+        	try{
+        		t.start();
+        		t.join();
+        	}catch(Exception e){
+        		System.out.println(e.getMessage());
+        	}
+        }
+        //////////////////////////////
+        //Using main thread
+        else mergeSort.run();
+        //////////////////////////////
+    }     
+    
     private void selectionSort(boolean useNewThread) {
     	
         SelectionSort mySelectionSort = new SelectionSort(pts);
@@ -92,9 +124,6 @@ public class SortMain extends ConsoleProgram{
         //Using main thread
         else mySelectionSort.run();
         //////////////////////////////
-        
-        println("Selection Sort:");
-        println(pts);
     }  
     
     private void bubbleSort(boolean useNewThread) {
@@ -115,17 +144,8 @@ public class SortMain extends ConsoleProgram{
         //Using main thread
         else mybubbleSort.run();
         //////////////////////////////
-        
-        println("Bubble Sort:");
-        println(pts);
     }    
-    
-    
-    private void println(int[] ab) {
-        for (int a:ab) print(a + "  ");
-        println();
-    }
-   
+
     private void println(ArrayList<Integer> ab) {
     	for (Integer a:ab) print(a + "  ");
         println();
