@@ -18,6 +18,7 @@ public class SortMain extends ConsoleProgram{
     public static int SIZE = 19;
     public static int MAXINT = 80;
     private ArrayList<Integer> pts = new ArrayList<Integer> ();
+
     /**
      * @param args the command line arguments
      */

@@ -51,7 +51,7 @@ public class SelectionSort implements Runnable, Sort {
     }	
     
     public String toString() {
-    	return "Selection sort is completed in " + getTime() + " nanoseconds";
+		return "Selection sort completed in " + getTime() + " nanoseconds";
     }
     
     public void reversedList() {
@@ -61,4 +61,5 @@ public class SelectionSort implements Runnable, Sort {
             swap(low, high--);
         }
     }     
+
 }
