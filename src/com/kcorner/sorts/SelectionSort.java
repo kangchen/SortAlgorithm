@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class SelectionSort implements Runnable, Sort {
 	
-	private List<Integer> item = new ArrayList<Integer> ();
+	private List<Integer> list = new ArrayList<Integer> ();
 	private long time = 0;
 	
 	public SelectionSort(List<Integer> item) {
-		this.item = item;
+		this.list = item;
 	}
 
 	public void run() {
@@ -25,11 +25,11 @@ public class SelectionSort implements Runnable, Sort {
         int idx=0;          //location of smallest number
         int tmp=0;          //find smallest number
 
-        for(int i=0; i<item.size()-1; i++) {
-            tmp = item.get(i);
-            for(int j=i; j<item.size(); j++) {
-               if (item.get(j) <= tmp) {
-                   tmp = item.get(j);
+        for(int i=0; i<list.size()-1; i++) {
+            tmp = list.get(i);
+            for(int j=i; j<list.size(); j++) {
+               if (list.get(j) <= tmp) {
+                   tmp = list.get(j);
                    idx = j;
                }
             }
@@ -45,9 +45,9 @@ public class SelectionSort implements Runnable, Sort {
     }
     
     private void swap(int x, int y) {
-        int tmp = item.get(x);
-        item.set(x, item.get(y));
-        item.set(y, tmp);
+        int tmp = list.get(x);
+        list.set(x, list.get(y));
+        list.set(y, tmp);
     }	
     
     public String toString() {
@@ -55,11 +55,11 @@ public class SelectionSort implements Runnable, Sort {
     }
     
     public void reversedList() {
-        int idx = item.size()/2;
-        int high = item.size()-1;
+        int idx = list.size()/2;
+        int high = list.size()-1;
         for(int low=0; low<idx; low++) {
             swap(low, high--);
         }
     }     
-
+ 
 }

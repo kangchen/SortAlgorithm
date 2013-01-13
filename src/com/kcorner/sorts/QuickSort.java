@@ -5,12 +5,12 @@ import java.util.List;
 
 public class QuickSort implements Runnable, Sort {
 	
-	private List<Integer> item = new ArrayList<Integer> ();
+	private List<Integer> list = new ArrayList<Integer> ();
 	private long time = 0;
 	private int pivotPos=0;
 	
 	public QuickSort(List<Integer> item) {
-		this.item = item;
+		this.list = item;
 	}
 	
 	public void run() {		
@@ -25,7 +25,7 @@ public class QuickSort implements Runnable, Sort {
     	
         long starttime = System.nanoTime(); 
         if (!isSorted()){
-            doQuickSort(0, item.size()-1);
+            doQuickSort(0, list.size()-1);
         }
         long endtime = System.nanoTime();
         time = endtime - starttime;
@@ -47,17 +47,17 @@ public class QuickSort implements Runnable, Sort {
     private int quickPartition(int leftIdx, int rightIdx)
     {
 
-        int pivot = item.get(leftIdx);
+        int pivot = list.get(leftIdx);
         int pivotIdx = leftIdx;
         
         while (rightIdx > leftIdx) {
 
-            while (item.get(rightIdx) > pivot) {
+            while (list.get(rightIdx) > pivot) {
                 if (rightIdx == leftIdx) break;
                 else rightIdx--;
             }
 
-            while (item.get(leftIdx) <= pivot) {
+            while (list.get(leftIdx) <= pivot) {
                 if (leftIdx == rightIdx) break;
                 else leftIdx++;
             }
@@ -68,7 +68,7 @@ public class QuickSort implements Runnable, Sort {
             }
 
             if(leftIdx == rightIdx) {
-                if(item.get(leftIdx) < pivot) {
+                if(list.get(leftIdx) < pivot) {
                     swap(pivotIdx, leftIdx);
                 }
                 pivotIdx = leftIdx;
@@ -84,9 +84,9 @@ public class QuickSort implements Runnable, Sort {
         long starttime = System.currentTimeMillis();
         long endtime = 0;
 
-        if(item.get(0) < item.get(item.size()-1)) {
-            for(int i=0; i<item.size()-1; i++){
-                if(item.get(i) > item.get(i+1)) {
+        if(list.get(0) < list.get(list.size()-1)) {
+            for(int i=0; i<list.size()-1; i++){
+                if(list.get(i) > list.get(i+1)) {
                     endtime = System.currentTimeMillis();
                     time = endtime - starttime;
                     return false;
@@ -94,8 +94,8 @@ public class QuickSort implements Runnable, Sort {
             }
         }
         else {
-            for(int i=0; i<item.size()-1; i++){
-                if(item.get(i) < item.get(i+1)) {
+            for(int i=0; i<list.size()-1; i++){
+                if(list.get(i) < list.get(i+1)) {
                     endtime = System.currentTimeMillis();
                     time = endtime - starttime;
                     return false;
@@ -110,9 +110,9 @@ public class QuickSort implements Runnable, Sort {
     
 
     private void swap(int x, int y) {
-        int tmp = item.get(x);
-        item.set(x, item.get(y));
-        item.set(y, tmp);
+        int tmp = list.get(x);
+        list.set(x, list.get(y));
+        list.set(y, tmp);
     }
     
     public String toString() {
@@ -124,10 +124,11 @@ public class QuickSort implements Runnable, Sort {
     }
 
     public void reversedList() {
-        int idx = item.size()/2;
-        int high = item.size()-1;
+        int idx = list.size()/2;
+        int high = list.size()-1;
         for(int low=0; low<idx; low++) {
             swap(low, high--);
         }
-    }    
+    }
+   
 }

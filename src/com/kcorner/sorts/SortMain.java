@@ -4,6 +4,7 @@
  */
 package com.kcorner.sorts;
 import java.util.ArrayList;
+import java.util.List;
 
 import acm.program.*;
 
@@ -17,7 +18,7 @@ public class SortMain extends ConsoleProgram{
     private static final int YSCREENSIZE = 600;
     public static int SIZE = 19;
     public static int MAXINT = 80;
-    private ArrayList<Integer> pts = new ArrayList<Integer> ();
+    private List<Integer> pts; // = Collections.synchronizedList( new ArrayList<Integer> ();
 
     /**
      * @param args the command line arguments
@@ -30,6 +31,7 @@ public class SortMain extends ConsoleProgram{
     @Override
     public void init() {
 
+    	pts = new ArrayList<Integer>();
     	setRandomNumber();
         setFont("verdana-bold-14");
         setSize(XSCREENSIZE, YSCREENSIZE);
@@ -49,13 +51,14 @@ public class SortMain extends ConsoleProgram{
         println(pts);
 
         testSort(1, true);
- 
+
         println(pts);
+
     }
     
     
     private void testSort(int index, boolean newThread) {
-    	
+
     	switch(index) {    	
     		case 0: println("Bubble Sort");bubbleSort(newThread); break;
     		case 1: println("Selection Sort");selectionSort(newThread); break;
@@ -147,8 +150,9 @@ public class SortMain extends ConsoleProgram{
         //////////////////////////////
     }    
 
-    private void println(ArrayList<Integer> ab) {
+    private void println(List<Integer> ab) {
     	for (Integer a:ab) print(a + "  ");
-        println();
+    	println();
+    	
     }    
 }

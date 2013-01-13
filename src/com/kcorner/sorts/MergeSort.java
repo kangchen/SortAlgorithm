@@ -5,12 +5,12 @@ import java.util.List;
 
 public class MergeSort implements Runnable, Sort {
 
-	private List<Integer> item = new ArrayList<Integer> ();
+	private List<Integer> list = new ArrayList<Integer> ();
 	private List<Integer> temp = new ArrayList<Integer> ();;
 	private long time = 0;
 	
 	public MergeSort(List<Integer> item) {
-		this.item = item;
+		this.list = item;
 		initializeTempList();
 	}	
 	
@@ -20,7 +20,7 @@ public class MergeSort implements Runnable, Sort {
 	}
 	
 	private void initializeTempList() {
-		for(int i=0; i<item.size(); i++) {
+		for(int i=0; i<list.size(); i++) {
 			temp.add(0);
 		}
 	}
@@ -29,7 +29,7 @@ public class MergeSort implements Runnable, Sort {
      */
     public void sort() {
         long starttime = System.nanoTime();
-        mergePartition(0, item.size()-1);
+        mergePartition(0, list.size()-1);
         long endtime = System.nanoTime();
         time = endtime - starttime;
     }
@@ -53,11 +53,11 @@ public class MergeSort implements Runnable, Sort {
         
 //        System.out.println("Debug 02: " + lowPtr + " " + midPtr + " " + highPtr);
         while (lowPtr <= mid && midPtr <= highPtr) {
-            if (item.get(lowPtr) < item.get(midPtr)) {
-                temp.set(ci++, item.get(lowPtr++));
+            if (list.get(lowPtr) < list.get(midPtr)) {
+                temp.set(ci++, list.get(lowPtr++));
             }
             else {
-                temp.set(ci++, item.get(midPtr++));
+                temp.set(ci++, list.get(midPtr++));
             }
         }
 
@@ -65,14 +65,14 @@ public class MergeSort implements Runnable, Sort {
          * copy remaining sorted elements
          */
         while (lowPtr <= mid) {
-            temp.set(ci++, item.get(lowPtr++));
+            temp.set(ci++, list.get(lowPtr++));
         }
 
         /*
          * copy remaining sorted elements
          */
         while (midPtr <= highPtr) {
-            temp.set(ci++, item.get(midPtr++));
+            temp.set(ci++, list.get(midPtr++));
         }
 
         /*
@@ -83,7 +83,7 @@ public class MergeSort implements Runnable, Sort {
 
     private void copy(int from, int num, List<Integer> arrTemp) {
         for(int i=0; i<num; i++){
-            item.set(from+i, arrTemp.get(i));
+            list.set(from+i, arrTemp.get(i));
         }
     }
     
@@ -96,16 +96,17 @@ public class MergeSort implements Runnable, Sort {
     }
  
     private void swap(int x, int y) {
-        int tmp = item.get(x);
-        item.set(x, item.get(y));
-        item.set(y, tmp);
+        int tmp = list.get(x);
+        list.set(x, list.get(y));
+        list.set(y, tmp);
     }
     
     public void reversedList() {
-        int idx = item.size()/2;
-        int high = item.size()-1;
+        int idx = list.size()/2;
+        int high = list.size()-1;
         for(int low=0; low<idx; low++) {
             swap(low, high--);
         }
     } 
+    
 }
