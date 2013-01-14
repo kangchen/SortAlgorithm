@@ -1,23 +1,38 @@
 package com.kcorner.sorts;
 
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Kang Chen
+ * @version 2.0.0
+ */
 public class BubbleSort implements Runnable, Sort{
-		
-	private List<Integer> list = new ArrayList<Integer> ();
-	private long time = 0;
 	
+	/**
+	 * A list of integers
+	 */	
+	private List<Integer> list;
+	
+	/**
+	 * An elapsed sorting time in nanoseconds
+	 */
+	private long time = 0;
+
+	/**
+	 * Constructor
+	 * @param item : an integer list
+	 */
 	public BubbleSort(List<Integer> item) {
 		this.list = item;
 	}
 
+	@Override
 	public void run() {
 		sort();
 		System.out.println(this.toString());
 	}
  
-    /*
+    /**
      * Bubble Sort Algorithm O(N*N)
      */	
 	public void sort() {
@@ -32,13 +47,21 @@ public class BubbleSort implements Runnable, Sort{
         long endtime = System.nanoTime();
         time = endtime - starttime;
 	}
-	
+    
+    /**
+     * Swap two values
+     * @param x : a value to swap from
+     * @param y : a value to swap to
+     */ 
     private void swap(int x, int y) {
         int tmp = list.get(x);
         list.set(x, list.get(y));
         list.set(y, tmp);
     }
-   
+    
+    /**
+     * Swap the list in reverse order
+     */    
     public void reversedList() {
         int idx = list.size()/2;
         int high = list.size()-1;
@@ -47,12 +70,20 @@ public class BubbleSort implements Runnable, Sort{
         }
     } 
     
+    /**
+     * Get an elapsed sorting time in nanoseconds
+     * @return long
+     */   
     public long getTime() {
         return time;
     }
     
+    /**
+     * Return a string of an elapsed time in nanoseconds
+     * @return String
+     */  
     public String toString() {
     	return "Bubble sort completed in " + getTime() + " nanoseconds";
     }
- 
+
 }

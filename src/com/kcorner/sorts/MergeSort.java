@@ -5,8 +5,8 @@ import java.util.List;
 
 public class MergeSort implements Runnable, Sort {
 
-	private List<Integer> list = new ArrayList<Integer> ();
-	private List<Integer> temp = new ArrayList<Integer> ();;
+	private List<Integer> list;
+	private List<Integer> temp = new ArrayList<Integer> ();
 	private long time = 0;
 	
 	public MergeSort(List<Integer> item) {
@@ -51,7 +51,6 @@ public class MergeSort implements Runnable, Sort {
         int mid = midPtr - 1;
         int bi = highPtr - ai + 1;
         
-//        System.out.println("Debug 02: " + lowPtr + " " + midPtr + " " + highPtr);
         while (lowPtr <= mid && midPtr <= highPtr) {
             if (list.get(lowPtr) < list.get(midPtr)) {
                 temp.set(ci++, list.get(lowPtr++));

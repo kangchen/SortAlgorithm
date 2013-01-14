@@ -18,8 +18,8 @@ public class SortMain extends ConsoleProgram{
 	private static final int XSCREENSIZE = 800;
     private static final int YSCREENSIZE = 600;
     private static final int PRINTSIZELIMIT = 50;
-    public static int SIZE = 19;
-    public static int MAXINT = 80;
+    public static int SIZE = 25;
+    public static int MAXINT = 89;
     private List<Integer> pts; // = Collections.synchronizedList( new ArrayList<Integer> ();
     private Sort sort;
 
@@ -51,11 +51,11 @@ public class SortMain extends ConsoleProgram{
     @Override
     public void run() {
         println("Unsorted Array:");
-        println(pts);
+        println(pts);  //print only if size of list is least than PRINTSIZELIMIT
 
-        testSort(3, true);
+        testSort(0, false);
         
-        println(pts);
+        println(pts);  //print only if size of list is least than PRINTSIZELIMIT
         print("Elapsed Time : " + TimeUnit.MICROSECONDS.convert(sort.getTime(), TimeUnit.NANOSECONDS) + " microseconds");
 
     }
@@ -155,9 +155,10 @@ public class SortMain extends ConsoleProgram{
     }    
 
     private void println(List<Integer> ab) {
-    	if (ab.size() < PRINTSIZELIMIT) {
+    	if (ab.size() <= PRINTSIZELIMIT) {
     		for (Integer a:ab) print(a + "  ");
     	}
     	println();    	
     }    
+
 }

@@ -1,11 +1,10 @@
 package com.kcorner.sorts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuickSort implements Runnable, Sort {
 	
-	private List<Integer> list = new ArrayList<Integer> ();
+	private List<Integer> list;
 	private long time = 0;
 	private int pivotPos=0;
 	
