@@ -11,4 +11,5 @@ package com.kcorner.sorts;
 public interface Sort {
 	void sort();
 	void reversedList();
+	long getTime();
 }

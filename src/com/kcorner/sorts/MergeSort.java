@@ -87,7 +87,7 @@ public class MergeSort implements Runnable, Sort {
         }
     }
     
-    private long getTime() {
+    public long getTime() {
         return time;
     }
     

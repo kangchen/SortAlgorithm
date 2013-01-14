@@ -47,7 +47,7 @@ public class BubbleSort implements Runnable, Sort{
         }
     } 
     
-    private long getTime() {
+    public long getTime() {
         return time;
     }
     

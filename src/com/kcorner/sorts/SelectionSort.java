@@ -40,7 +40,7 @@ public class SelectionSort implements Runnable, Sort {
         time = endtime - starttime;
 	}
 	
-    private long getTime() {
+    public long getTime() {
         return time;
     }
     

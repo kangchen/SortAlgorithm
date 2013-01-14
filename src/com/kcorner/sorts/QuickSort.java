@@ -119,7 +119,7 @@ public class QuickSort implements Runnable, Sort {
     	return "Quick sort is completed in " + getTime() + " nanoseconds";
     }
 
-    private long getTime() {
+    public long getTime() {
         return time;
     }
 
