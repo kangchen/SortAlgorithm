@@ -85,7 +85,6 @@ public class SortMain extends ConsoleProgram{
     	  Thread t = new Thread((Runnable) sort);
     	  try{
     		  t.start();
-    		  //t.join();
     	  }catch(Exception e){
     		  System.out.println(e.getMessage());
     	  }
@@ -106,7 +105,6 @@ public class SortMain extends ConsoleProgram{
         	Thread t = new Thread((Runnable) sort);
         	try{
         		t.start();
-        		//t.join();
         	}catch(Exception e){
         		System.out.println(e.getMessage());
         	}
@@ -126,7 +124,6 @@ public class SortMain extends ConsoleProgram{
         	Thread t = new Thread((Runnable) sort);
         	try{
         		t.start();
-        		//t.join();
         	}catch(Exception e){
         		System.out.println(e.getMessage());
         	}
@@ -146,7 +143,6 @@ public class SortMain extends ConsoleProgram{
         	Thread t = new Thread((Runnable) sort);
         	try{
         		t.start();
-        		//t.join();
         	}catch(Exception e){
         		System.out.println(e.getMessage());
         	}
