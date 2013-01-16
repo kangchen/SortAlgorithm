@@ -18,7 +18,7 @@ public class SelectionSort implements Runnable, Sort {
 	 * An elapsed sorting time in nanoseconds
 	 */
 	private long time = 0;
-	
+	private boolean sortCompleted = false;	
 	/**
 	 * Constructor
 	 * @param item : an integer list
@@ -54,6 +54,7 @@ public class SelectionSort implements Runnable, Sort {
 
         long endtime = System.nanoTime();
         time = endtime - starttime;
+        sortCompleted = true;
 	}
 	
     /**
@@ -93,5 +94,8 @@ public class SelectionSort implements Runnable, Sort {
             swap(low, high--);
         }
     }     
- 
+
+	public boolean isSortCompleted() {
+		return sortCompleted;
+	}
 }

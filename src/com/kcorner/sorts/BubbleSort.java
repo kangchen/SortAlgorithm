@@ -17,6 +17,7 @@ public class BubbleSort implements Runnable, Sort{
 	 * An elapsed sorting time in nanoseconds
 	 */
 	private long time = 0;
+	private boolean sortCompleted = false;
 
 	/**
 	 * Constructor
@@ -24,6 +25,10 @@ public class BubbleSort implements Runnable, Sort{
 	 */
 	public BubbleSort(List<Integer> item) {
 		this.list = item;
+	}
+
+	public boolean isSortCompleted() {
+		return sortCompleted;
 	}
 
 	@Override
@@ -46,6 +51,7 @@ public class BubbleSort implements Runnable, Sort{
 		}
         long endtime = System.nanoTime();
         time = endtime - starttime;
+        sortCompleted = true;
 	}
     
     /**

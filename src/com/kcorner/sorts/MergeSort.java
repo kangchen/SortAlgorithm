@@ -8,6 +8,7 @@ public class MergeSort implements Runnable, Sort {
 	private List<Integer> list;
 	private List<Integer> temp = new ArrayList<Integer> ();
 	private long time = 0;
+	private boolean sortCompleted = false;
 	
 	public MergeSort(List<Integer> item) {
 		this.list = item;
@@ -32,6 +33,7 @@ public class MergeSort implements Runnable, Sort {
         mergePartition(0, list.size()-1);
         long endtime = System.nanoTime();
         time = endtime - starttime;
+        sortCompleted = true;
     }
 
     private void mergePartition(int low, int high) {
@@ -107,5 +109,8 @@ public class MergeSort implements Runnable, Sort {
             swap(low, high--);
         }
     } 
-    
+
+	public boolean isSortCompleted() {
+		return sortCompleted;
+	}   
 }

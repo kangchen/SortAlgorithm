@@ -6,6 +6,7 @@ public class QuickSort implements Runnable, Sort {
 	
 	private List<Integer> list;
 	private long time = 0;
+	private boolean sortCompleted = false;	
 	private int pivotPos=0;
 	
 	public QuickSort(List<Integer> item) {
@@ -28,6 +29,7 @@ public class QuickSort implements Runnable, Sort {
         }
         long endtime = System.nanoTime();
         time = endtime - starttime;
+        sortCompleted = true;
     }
 
     private void doQuickSort(int leftIdx, int rightIdx) {
@@ -129,5 +131,8 @@ public class QuickSort implements Runnable, Sort {
             swap(low, high--);
         }
     }
-   
+
+	public boolean isSortCompleted() {
+		return sortCompleted;
+	}  
 }
