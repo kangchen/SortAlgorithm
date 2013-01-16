@@ -12,5 +12,5 @@ public interface Sort {
 	void sort();
 	void reversedList();
 	long getTime();
-	public boolean isSortCompleted();
+	boolean isSortCompleted();
 }
