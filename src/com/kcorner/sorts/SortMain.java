@@ -35,12 +35,11 @@ public class SortMain extends ConsoleProgram{
     @Override
     public void init() {
 
-    	list = Collections.synchronizedList(new ArrayList());
+    	list = Collections.synchronizedList(new ArrayList<Integer>());
     	setRandomNumber();
-        setFont("verdana-bold-14");
+        setFont("verdana-12");
         setSize(XSCREENSIZE, YSCREENSIZE);
         setTitle("Sort Algorithms");
-        
     }
     
     private void setRandomNumber() {

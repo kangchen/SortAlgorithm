@@ -6,7 +6,7 @@ import java.util.List;
  * @author Kang Chen
  * @version 2.0.0
  */
-public class BubbleSort implements Runnable, Sort{
+public final class BubbleSort implements Runnable, Sort{
 	
 	/**
 	 * A list of integers

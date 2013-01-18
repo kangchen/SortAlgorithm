@@ -3,7 +3,7 @@ package com.kcorner.sorts;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MergeSort implements Runnable, Sort {
+public final class MergeSort implements Runnable, Sort {
 
 	private List<Integer> list;
 	private List<Integer> temp = new ArrayList<Integer> ();

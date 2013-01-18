@@ -2,7 +2,7 @@ package com.kcorner.sorts;
 
 import java.util.List;
 
-public class QuickSort implements Runnable, Sort {
+public final class QuickSort implements Runnable, Sort {
 	
 	private List<Integer> list;
 	private long time = 0;

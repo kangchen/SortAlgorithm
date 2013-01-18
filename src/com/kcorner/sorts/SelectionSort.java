@@ -7,7 +7,7 @@ import java.util.List;
  * @version 2.0.0
  */
 
-public class SelectionSort implements Runnable, Sort {
+public final class SelectionSort implements Runnable, Sort {
 	
 	/**
 	 * A list of integers
