@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package com.kcorner.sorts;
+//import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,16 +14,17 @@ import acm.program.*;
 /**
  * 
  */
-public class SortMain extends ConsoleProgram{
+public class SortMain extends ConsoleProgram {
 
 	private static final long serialVersionUID = 1L;
 	private static final int XSCREENSIZE = 800;
     private static final int YSCREENSIZE = 600;
     private static final int PRINTSIZELIMIT = 50;
-    public static int SIZE = 25;
-    public static int MAXINT = 89; // random number between 10 - 99;
+    public static int SIZE = 30;
+    public static int MAXINT = 89; //random number between 10 - 99;
     private List<Integer> list;
     private Sort sort;
+    private int pickSort=3; //default QuickSort
 
     /**
      * @param args the command line arguments
@@ -36,7 +38,6 @@ public class SortMain extends ConsoleProgram{
     public void init() {
 
     	list = Collections.synchronizedList(new ArrayList<Integer>());
-    	setRandomNumber();
         setFont("verdana-12");
         setSize(XSCREENSIZE, YSCREENSIZE);
         setTitle("Sort Algorithms");
@@ -50,28 +51,54 @@ public class SortMain extends ConsoleProgram{
 
     @Override
     public void run() {
-        println("Unsorted Array:");
-        println(list);  //print only if size of list is least than PRINTSIZELIMIT
-
-        testSort(0, true);
-        
-        while(!sort.isSortCompleted()); //wait for a sorting to be completed
-        println(list);  //print only if size of list is least than PRINTSIZELIMIT
-        println("Elapsed Time : " + TimeUnit.MICROSECONDS.convert(sort.getTime(), TimeUnit.NANOSECONDS) + " microseconds");
-
+    	String cont = null;
+    	do{
+        	setRandomNumber();
+	        println(SIZE + " unsorted integers");
+	        println(list);  //print only if size of list is least than PRINTSIZELIMIT
+	        pickSort=menu();
+	        goSort(pickSort, false);
+	        
+	        while(!sort.isSortCompleted()); //wait for a sorting to be completed
+	        println(list);  //print only if size of list is less than PRINTSIZELIMIT
+	       	println("Elapsed Time : " + TimeUnit.MICROSECONDS.convert(sort.getTime(), TimeUnit.NANOSECONDS) + " microseconds");
+	       	println();
+	       	list.clear();
+	       	
+	       	cont=readLine("Do you want to continue another sort? (y/n): ");
+			cont=cont.toUpperCase();
+			if (cont.matches("N")) {pickSort = 5;}
+			println();
+			
+    	}while(pickSort!=5); //End of do-while loop
+    	System.exit(0);
     }
     
     
-    private void testSort(int index, boolean newThread){
+    private void goSort(int index, boolean newThread){
    	
 		switch(index) {    	
-    		case 0: println("Bubble Sort");bubbleSort(newThread); break;
-    		case 1: println("Selection Sort");selectionSort(newThread); break;
-    		case 2: println("Merge Sort");mergeSort(newThread); break;
-    		case 3: println("Quick Sort");quickSort(newThread); break;
+    		case 1: println("Bubble Sort");bubbleSort(newThread); break;
+    		case 2: println("Selection Sort");selectionSort(newThread); break;
+    		case 3: println("Merge Sort");mergeSort(newThread); break;
+    		case 4: println("Quick Sort");quickSort(newThread); break;
+    		case 5: System.exit(0); break;
     		default:println("Quick Sort");quickSort(newThread);
 		}
     	
+    }
+    
+    private int menu(){
+    	int item;
+    	println("\t\t\t\t===================");
+    	println("\t\t\t\t1: Bubble Sort");
+    	println("\t\t\t\t2: Selection Sort");
+    	println("\t\t\t\t3: Merge Sort");
+    	println("\t\t\t\t4: Quick Sort");
+    	println("\t\t\t\t5: Exit");
+    	println("\t\t\t\t===================");
+    	item=readInt("\t\t\t\tEnter one of options: ");
+    	return item;
     }
     
 

@@ -19,7 +19,7 @@ public final class QuickSort implements Runnable, Sort {
 	}
 	
     /*
-     * Quick Sort Algorithm
+     * QuickSort Algorithm
      */
     public void sort() {
     	
