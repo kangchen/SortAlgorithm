@@ -22,8 +22,10 @@
 *.7z
 *.dmg
 *.gz
+*.DS_Store
 *.iso
 *.jar
 *.rar
 *.tar
 *.zip
+/bin/
